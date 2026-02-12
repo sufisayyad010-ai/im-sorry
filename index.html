@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please Forgive Me ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            position: relative;
+        }
+
+        /* 🖼 Image Style */
+        .love-img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            transition: 0.4s;
+        }
+
+        .love-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        #message {
+            font-size: 18px;
+            color: #444;
+            min-height: 80px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background-color: #e63950;
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background-color: #ddd;
+            position: absolute;
+        }
+
+        #musicBtn {
+            background-color: #6c5ce7;
+            color: white;
+        }
+
+        #musicBtn:hover {
+            background-color: #5a4bd1;
+            transform: scale(1.05);
+        }
+
+        .final-message {
+            display: none;
+            font-size: 22px;
+            color: #ff4d6d;
+            margin-top: 20px;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: white;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- 🖼 ADD YOUR IMAGE HERE -->
+        <img src="s.jpeg" class="love-img" alt="Our Memory">
+
+
+        <h1>hiiiii wifeyyyy my babyyy❤️❤️❤️</h1>
+        <div id="message"></div>
+
+        <div class="buttons">
+            <button id="yesBtn">Forgive Me 🥺</button>
+            <button id="noBtn">No 😤</button>
+            <br>
+            <button id="musicBtn">🔊 Play Music</button>
+        </div>
+
+        <div class="final-message" id="finalMessage">
+            Thanku maaf kar diye sorry gussa kiya💖<br>
+            I love you so much meri cutu piee babyy
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="wow.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Typing Effect
+        const text = "I know I messed up I shouldn't have scolded you... and I hate that I hurt you. Sowwy You are the most important and cutu kuchupuchu person to me my babyyyyy muaa sowwy . ❤️";
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                document.getElementById("message").innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 40);
+            }
+        }
+        typeEffect();
+
+        // Yes button
+        document.getElementById("yesBtn").addEventListener("click", function () {
+            document.getElementById("finalMessage").style.display = "block";
+            document.querySelector(".buttons").style.display = "none";
+        });
+
+        // No button runs away
+        const noBtn = document.getElementById("noBtn");
+        noBtn.addEventListener("mouseover", function () {
+            noBtn.style.top = Math.random() * 200 + "px";
+            noBtn.style.left = Math.random() * 300 + "px";
+        });
+
+        // Floating hearts
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }, 300);
+
+        // Music Toggle
+        const music = document.getElementById("bgMusic");
+        const musicBtn = document.getElementById("musicBtn");
+
+        musicBtn.addEventListener("click", function () {
+            if (music.paused) {
+                music.play();
+                musicBtn.innerText = "🔇 Stop Music";
+            } else {
+                music.pause();
+                musicBtn.innerText = "🔊 Play Music";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
